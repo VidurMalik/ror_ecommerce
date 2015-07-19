@@ -1,0 +1,49 @@
+%h3
+  Purchase Order #{@purchase_order}
+.row
+  .large-4.columns
+    %div
+      %label Supplier
+      = @purchase_order.supplier.name
+    %div
+      %label Invoice Number
+      = @purchase_order.invoice_number
+    %div
+      %label Total Cost
+      = @purchase_order.total_cost
+    %div
+      %label Tracking Number
+      = @purchase_order.tracking_number
+  .large-8.columns
+    %div
+      %label Notes
+      = @purchase_order.notes
+    %div
+      %label Ordered At
+      .date-select
+        - if !!@purchase_order.ordered_at
+          = I18n.l @purchase_order.ordered_at, format: :us_time
+        - else
+          \---
+    %div
+      %label Estimated Arrival on
+      .date-select
+        - if !!@purchase_order.estimated_arrival_on
+          = I18n.l @purchase_order.estimated_arrival_on, format: :us_date
+.row.top20
+  .six.columns.panel
+    %label Details:
+    - @purchase_order.purchase_order_variants.each do |po_variant|
+      %div
+        Variant: #{po_variant.variant.name}
+        %br/
+        Quantity: #{po_variant.quantity}
+        %br/
+        Cost: #{po_variant.cost}
+        %br/
+        Received: #{!!po_variant.is_received}
+- if !@purchase_order.receive_po
+  = link_to 'Receive PO', edit_admin_inventory_receiving_path(@purchase_order), class: "button"
+  |
+= link_to 'Back', admin_inventory_purchase_orders_path
+.clearfix  

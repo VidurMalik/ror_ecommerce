@@ -6,6 +6,7 @@ gem 'rails', '~> 4.2.0'
 
 gem 'uglifier',     '>= 1.3.0'
 gem 'sass-rails',   '~> 4.0.0'
+gem 'haml-rails'
 
 gem 'actionpack-page_caching'
 gem "activemerchant", '~> 1.48'#, :lib => 'active_merchant'
@@ -48,7 +49,7 @@ gem 'prawn',        '~> 0.12.0'
 gem "rails3-generators", "~> 1.0.0"
 #git: "https://github.com/neocoin/rails3-generators.git"
 gem "rails_config"
-gem 'rmagick',    '= 2.13.3', :require => 'RMagick'
+# gem 'rmagick',    '= 2.13.3', :require => 'RMagick'
 
 gem 'rake', '~> 10.1'
 
@@ -69,7 +70,6 @@ group :production do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'railroady'
   #gem 'awesome_print'
   #gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
